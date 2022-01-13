@@ -1,0 +1,53 @@
+// out: ./vconsole.css, compress: true, sourceMap: false, javascriptEnabled:true, math:always
+@import url(./base/base.less);
+.vconsole-main-container {
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background-color: #fff;
+  header {
+    padding: 16 / @vw 0 16 / @vw 0;
+    text-align: center;
+  }
+  .list {
+    padding: 0 4 / @vw;
+    .item {
+      position: relative;
+      padding: 10 / @vw 6 / @vw 6 / @vw 6 / @vw;
+      .setSize(100%,auto);
+      border: 1px solid #bbb;
+      border-radius: 6 / @vw;
+      margin-bottom: 12 / @vw;
+      &::before {
+        content: attr(data-title);
+        position: absolute;
+        .setPosition(absolute,-7/@vw,auto,auto,8/@vw);
+        font-size: 13 / @vw;
+        color: #222;
+        background-color: #fff;
+        padding: 0 6 / @vw;
+      }
+      button {
+        padding: 2 / @vw 12 / @vw 3 / @vw 12 / @vw;
+        background-color: #888;
+        border-radius: 3 / @vw;
+        border: none;
+        outline: none;
+        color: #fff;
+        vertical-align: baseline;
+      }
+      .num-val {
+        display: inline-block;
+        .setSize(280/@vw,auto);
+        line-height: 1.2;
+        position: relative;
+        top: 2 / @vw;
+        margin: 0 0 0 16 / @vw;
+        border-bottom: 1px dashed #888;
+        font-size: 13 / @vw;
+        color: rgb(21, 19, 54);
+        word-break: break-all;
+      }
+    }
+  }
+}

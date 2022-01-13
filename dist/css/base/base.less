@@ -1,0 +1,286 @@
+@charset "UTF-8";
+// 变量设置
+@ppd-main-color: #5d80ed;
+@border-color: #dae0ec;
+@vw: 3.75vw;
+html {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: 'pingfang sc', 'ROBOTO', sans-serif, Helvetica, NotoSans CJK, Droid Sans, 'microsoft yahei';
+}
+
+// body 也增加最大最小宽度限制，避免默认100%宽度的 block 元素跟随 body 而过大过小
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  text-rendering: optimizeLegibility;
+  -webkit-overflow-scrolling: touch;
+  -webkit-text-size-adjust: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: inherit;
+  &:before,
+  &:after {
+    box-sizing: inherit;
+  }
+}
+
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+pre,
+a,
+em,
+img,
+q,
+s,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+form,
+label,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 0;
+  background: transparent;
+  vertical-align: baseline;
+  font-size: 100%;
+}
+
+:focus {
+  outline: none;
+}
+
+.svg-icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+.hide {
+  display: none;
+}
+
+ol,
+ul,
+li {
+  list-style: none;
+}
+
+// 手机浏览器上按钮、图片、文本框点击进去时的阴影，加上下面的CSS样式就可以解决了。
+a,
+img,
+button,
+input,
+textarea {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+// 去掉textarea,input的默认样式（iOS上的圆角及内阴影等，Android未测试）
+input,
+textarea {
+  -webkit-appearance: none;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 2dppx) {
+  .border-bottom-1px:after,
+  .border-top-1px:after {
+    transform: scaleY(0.25);
+  }
+  .border-left-1px:after,
+  .border-right-1px:after {
+    transform: scaleX(0.25);
+  }
+  .border-1px:after {
+    width: 200%;
+    height: 200%;
+    transform: scale(0.5);
+    transform-origin: 0 0;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 3), only screen and (min-resolution: 3dppx) {
+  .border-bottom-1px:after,
+  .border-top-1px:after {
+    transform: scaleY(0.2);
+  }
+  .border-left-1px:after,
+  .border-right-1px:after {
+    transform: scaleX(0.2);
+  }
+  .border-1px:after {
+    width: 300%;
+    height: 300%;
+    transform: scale(0.333);
+    transform-origin: 0 0;
+  }
+}
+
+@keyframes step_typing {
+  50% {
+    border-color: transparent;
+  }
+}
+
+.placeholder() {
+  &::placeholder {
+    color: #b2bac9;
+    font-weight: 700;
+  }
+  &::-webkit-input-placeholder {
+    color: #b2bac9;
+    font-weight: 700;
+  }
+  &:-moz-placeholder {
+    color: #b2bac9;
+    font-weight: 700;
+  }
+  &::-moz-placeholder {
+    color: #b2bac9;
+    font-weight: 700;
+  }
+  &:-ms-input-placeholder {
+    color: #b2bac9;
+    font-weight: 700;
+  }
+}
+
+.setFlexPos(@direction; @xPos;@yPos) {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: @direction;
+  justify-content: @xPos;
+  align-items: @yPos;
+}
+
+.border-set(@position, @color, @width: 2px, @radius: 0px) when(@position = bottom) {
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: @width;
+    transform-origin: 0 0;
+    background-color: @color;
+  }
+}
+
+.border-set(@position, @color, @width: 2px, @radius: 0px) when(@position = top) {
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 1px;
+    width: 100%;
+    height: @width;
+    transform-origin: 0 0;
+    background-color: @color;
+  }
+}
+
+.border-set(@position, @color, @width: 2px, @radius: 0px) when(@position = left) {
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    left: 1px;
+    top: 0;
+    width: @width;
+    height: 100%;
+    transform-origin: 0 0;
+    background-color: @color;
+  }
+}
+
+.border-set(@position, @color, @width: 2px, @radius: 0px) when(@position = right) {
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    right: 1px;
+    top: 0;
+    width: @width;
+    height: 100%;
+    transform-origin: 0 0;
+    background-color: @color;
+  }
+}
+
+.border-set(@position, @color, @width: 2px, @radius: 0px) when(@position = all) {
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border: @width solid @color;
+    border-radius: @radius;
+  }
+}
+
+.setSize(@width; @height) {
+  width: @width;
+  height: @height;
+}
+
+.setBgImg(@url; @position-horizontal;@position-vertical; @size; @repeat) when(isstring(@url)) {
+  background-image: url(@url);
+  background-position: @position-horizontal @position-vertical;
+  background-size: @size;
+  background-repeat: @repeat;
+}
+
+.setBgImg(@url; @position-horizontal;@position-vertical; @size; @repeat) when not (isstring(@url)) {
+  background-position: @position-horizontal @position-vertical;
+  background-size: @size;
+  background-repeat: @repeat;
+}
+
+.setPosition(@position; @top; @right; @bottom; @left) {
+  position: @position;
+  top: @top;
+  right: @right;
+  bottom: @bottom;
+  left: @left;
+}
