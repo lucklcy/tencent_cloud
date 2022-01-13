@@ -34,8 +34,8 @@
           <button onclick="getVal(this,'navigator.userAgent')">获取</button>
           <span class="num-val">XX</span>
         </li>
-        <li data-title="navigator.userAgentDate" class="item">
-          <button onclick="getVal(this,'navigator.userAgentDate')">获取</button>
+        <li data-title="navigator.userAgentData" class="item">
+          <button onclick="getVal(this,'navigator.userAgentData')">获取</button>
           <span class="num-val">XX</span>
         </li>
       </ul>
@@ -57,8 +57,8 @@
           case "navigator.userAgent":
             nextSpan.innerText = navigator.userAgent;
             break;
-          case "navigator.userAgentDate":
-            nextSpan.innerText = navigator.userAgentDate;
+          case "navigator.userAgentData":
+            nextSpan.innerText = JSON.stringify(navigator.userAgentData);
             break;
           default:
             break;
